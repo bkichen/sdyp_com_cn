@@ -1,0 +1,366 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html style="overflow-x:auto;overflow-y:auto;">
+<head>
+	<title>机构信息备案</title>
+	
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=9,IE=10">
+<meta http-equiv="Expires" content="0"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Cache-Control" content="no-store">
+<!-- 引入jquery插件 -->
+<script src="../../static/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+<script src="../../static/jquery/jquery-migrate-1.1.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="../../static/TableDnD/jquery.tablednd.js"></script>
+
+<!-- 引入依赖的第三方插件 -->
+<script src="../../static/slimscroll/jquery.slimscroll.min.js"></script>
+
+<script src="../../static/jquery-validation/1.14.0/jquery.validate.min.js" type="text/javascript"></script>
+<script src="../../static/jquery-validation/1.14.0/localization/messages_zh.min.js" type="text/javascript"></script>
+<link href="../../static/jquery-jbox/2.3/Skins/Bootstrap/jbox.min.css" rel="stylesheet">
+<script src="../../static/jquery-jbox/2.3/jquery.jBox-2.3.min.js" type="text/javascript"></script>
+<script src="../../static/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+<script src="../../static/pace/pace.min.js"></script>
+<script src="../../static/metisMenu/jquery.metisMenu.js"></script>
+<link href="../../static/iCheck/custom.css" rel="stylesheet">
+<script src="../../static/iCheck/icheck.min.js"></script>
+<script src="../../static/iCheck/icheck-init.js"></script>
+<link href="../../static/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+<script src="../../static/dataTables/jquery.dataTables.js"></script>
+<script src="../../static/dataTables/dataTables.bootstrap.js"></script>
+
+
+
+
+<!-- jeeplus -->
+<link href="../../static/common/jeeplus.css" type="text/css" rel="stylesheet">
+<script src="../../static/common/jeeplus.js" type="text/javascript"></script>
+
+<!-- jquery ui -->
+<script src="../../static/jquery-ui/jquery-ui.min.js"></script>
+
+<!-- 引入bootstrap插件 -->
+<!-- bootswatch主题效果不怎么好，停止切换，使用官网的默认版本，如果你想切换主题请访问http://bootswatch.com/下载最新版版主题，by刘高峰 -->
+<!--  <link href="/static/bootstrap/3.3.4/css_default/bootstrap.min.css" type="text/css" rel="stylesheet" />-->
+<link href="../../static/bootstrap/3.3.4/css_default/bootstrap.min.css" type="text/css" rel="stylesheet">
+<script src="../../static/bootstrap/3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
+<link href="../../static/awesome/4.4/css/font-awesome.min.css" rel="stylesheet">
+<link href="../../static/common/css/style-3.2.0.css" type="text/css" rel="stylesheet">
+
+<!-- 引入layer插件 -->
+<script src="../../static/layer-v2.3/layer/layer.js"></script>
+<script src="../../static/layer-v2.3/layer/laydate/laydate.js"></script>
+
+<!--引入webuploader-->
+<link rel="stylesheet" type="text/css" href="../../static/webuploader-0.1.5/webuploader.css">
+<script type="text/javascript" src="../../static/webuploader-0.1.5/webuploader.js"></script>
+
+
+<!-- 引入自定义文件 -->
+<script src="../../static/common/mustache.min.js" type="text/javascript"></script>
+<script src="../../static/common/content.js" type="text/javascript"></script>
+<link href="../../static/common/css/login.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">var ctx = '/a', ctxStatic='/static';</script>
+
+
+
+
+
+
+
+
+		
+	
+
+<meta name="decorator" content="default">
+<link rel="stylesheet" href="../../static/website2/css/datouwang.css">
+
+<script type="text/javascript">
+		var validateForm;
+		 
+		function doSubmit(){//回调函数，在编辑和保存动作时，供openDialog调用提交表单。
+		  var input = document.getElementById("file");
+		  var input02 = document.getElementById("file02");
+		  var fileSize;
+		  var fileSize02;
+		  if(validateForm.form()){
+			  if(input.files){
+			  	fileSize=input.files[0];
+			  }
+			  if(input02.files){
+				fileSize02=input02.files[0];
+			  }
+			  if((fileSize.size<10240000)&&(fileSize02.size<10240000)){
+				  $("#inputForm").submit();
+				  return true;
+			  }else{
+				  alert("图片大小不能大于10MB！！! ")
+				  return false;
+			  }
+		  }
+	
+		  return false;
+		}
+		
+		$(document).ready(function() {
+			
+			validateForm = $("#inputForm").validate({
+				submitHandler: function(form){
+					loading('正在提交，请稍等...');
+					form.submit();
+				},
+				errorContainer: "#messageBox",
+				errorPlacement: function(error, element) {
+					$("#messageBox").text("输入有误，请先更正。");
+					if (element.is(":checkbox")||element.is(":radio")||element.parent().is(".input-append")){
+						error.appendTo(element.parent().parent());
+					} else {
+						error.insertAfter(element);
+					}
+				}
+			});
+			
+					laydate({
+			            elem: '#establishmentDate', //目标元素。由于laydate.js封装了一个轻量级的选择器引擎，因此elem还允许你传入class、tag但必须按照这种方式 '#id .class'
+			            event: 'focus' //响应事件。如果没有传入event，则按照默认的click
+			        });
+					var intype = "1";
+					if(intype==="1"){
+						$("#beiandiv").show();
+					}
+					
+					
+		});
+	</script>
+<style type="text/css">
+.re_num_btn {
+	width: 100px;
+	display: inline-block;
+	background: #DA2E25;
+	color: #fff;
+	/*font-size:15px; */
+	line-height: 35px;
+	border-radius: 5px;
+	border: none;
+	align-self: center;
+}
+.form-control:focus,
+.single-line:focus {
+    border-color: #f30a0a !important;
+}
+.laydate_body .laydate_top {
+ border-top: 1px solid #f30a0a;
+ background-color: #f30a0a;
+}
+.laydate_body .laydate_box{border-top:none; border-bottom:none; background-color:#fff; color:#f30a0a;}
+.laydate_body .laydate_top{border-top:1px solid #f30a0a; background-color:#f30a0a}
+.laydate_body .laydate_box a, .laydate_body .laydate_box a:hover{color:#f30a0a;}
+.laydate_body .laydate_choose{border-left: 1px solid #f30a0a;}
+.laydate_body .laydate_chprev{border-left:none;border-right: 1px solid #f30a0a;}
+.laydate_body .laydate_ym{border:1px solid #f30a0a; background-color:#f30a0a;}
+.laydate_body .laydate_table td:hover{background-color: #e03734;color:#fff;}
+.laydate_body .laydate_click{background-color: #f50d08!important;color:#fff!important;}
+.laydate_body .laydate_table td{border:none;height:21px!important;line-height:21px!important;background-color:#fff;color:#f30a0a;}
+.laydate-icon{border:1px solid #ccc; background-image:url(../../static/website/images/red.png)}
+</style>
+
+<script type="text/javascript" src="/js/kb.js"></script></head>
+<body id="" class="hideScroll" style="">
+	
+
+<div class="process_four">
+	<div class="apply_content fl">
+		
+		<p class="con_main" style="font-size:22px;"><b>操作流程</b></p>
+		<div class="process">
+			<span class="circle active" data-num="0" src="../../static/website2/img/next1.png">机构入驻</span>
+			<img src="../../static/website2/img/next1.png" alt="">
+			<span class="circle" data-num="1" src="../../static/website2/img/next2.png">提交申请</span>
+			<img src="../../static/website2/img/next2.png" alt="">
+			<span class="circle " data-num="2" src="../../static/website2/img/next2.png">平台审核</span>
+			<img src="../../static/website2/img/next2.png" alt="">
+			<span class="circle " data-num="3" src="../../static/website2/img/next2.png">颁发证书</span>
+			<img src="../../static/website2/img/next2.png" alt="">
+			<span class="circle " data-num="4" src="../../static/website2/img/next2.png">机构信息公示</span>
+			<!-- <img src="../../static/website2/img/next2.png" alt="">
+			<span class="circle" data-num="5" src="../../static/website2/img/next2.png">6</span> -->
+		</div>
+		
+	</div>
+</div>
+
+	<form id="inputForm" class="form-horizontal" action="/a/ba/save" method="post" enctype="multipart/form-data">
+		<input id="id" name="id" type="hidden" value="">
+
+		<input type="hidden" id="innum" name="innum" value="1">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 0:隐藏tip, 1隐藏box,不设置显示全部 -->
+
+
+<script type="text/javascript">
+if($('.jbox').length > 0){
+	top.$.jBox.closeTip();
+}
+</script>
+
+		<table class="table table-bordered  table-condensed dataTables-example dataTable no-footer">
+			<tbody>
+			<tr><td style="font-size: 18px; background: #DA2E25;color: #fff;text-align: center;" colspan="8">机构信息备案</td></tr>
+				<tr>
+					<td class="active"><label class="pull-right"><font color="red">*</font>机构名称：</label></td>
+					<td class=""><input id="institutionalName" name="institutionalName" class="form-control required" type="text" value=""></td>
+					<td class="active"><label class="pull-right"><font color="red">*</font>法定代表人：</label></td>
+					<td class=""><input id="legalRepresentative" name="legalRepresentative" class="form-control required" type="text" value="" maxlength="5"></td>
+					<td class="active"><label class="pull-right"><font color="red">*</font>联系人：</label></td>
+					<td class=""><input id="linkman" name="linkman" class="form-control required" type="text" value=""></td>
+					<td class="active"><label class="pull-right"><font color="red">*</font>移动电话：</label></td>
+					<td class=""><input id="mobileTelephone" name="mobileTelephone" class="form-control required" type="text" value="" maxlength="30"></td>
+				
+				</tr>
+				<tr>
+					<td class="active"><label class="pull-right"><font color="red">*</font>成立日期：</label></td>
+					<td class=""><input id="establishmentDate" name="establishmentDate" type="text" maxlength="20" class="laydate-icon form-control layer-date required" value="">
+					</td>
+					<td class="active"><label class="pull-right"><font color="red">*</font>统一社会信用代码：</label></td>
+					<td class=""><input id="registrationNum" name="registrationNum" class="form-control required" type="text" value=""></td>
+										<td class="active"><label class="pull-right"><font color="red">*</font>营业执照：</label></td>
+					<td class="active">
+						 
+						<input type="file" name="file" accept="image/*" id="file" class="required">
+						<p style="color: red;">单张图片大小需小于10MB！！！</p>
+						
+					</td>
+					
+					<td class="active"><label class="pull-right"><font color="red">*</font>承诺书：</label></td>
+
+					<td class="active">
+					
+						<input type="file" name="commitmentFile" accept="image/*" id="file02" class="required">
+						<p style="color: red;">单张图片大小需小于10MB！！！</p>
+						<a href="javascript:;">山东企业信息网入驻承诺书模板下载.doc</a>
+					</td>
+					
+				</tr>
+
+				<tr>
+				<td class="active"><label class="pull-right"><font color="red">*</font>办公电话：</label></td>
+					<td class=""><input id="officePhone" name="officePhone" class="form-control required" type="text" value=""></td>
+					<td class="active"><label class="pull-right"><font color="red">*</font>电子信箱：</label></td>
+					<td class=""><input id="linkEmail" name="linkEmail" class="form-control required" type="text" value=""></td>
+					<td class="active"><label class="pull-right"><font color="red">*</font>其中：专业技术人员数量：</label></td>
+					<td class=""><input id="artisans" name="artisans" class="form-control required" type="text" value="" maxlength="5"></td>
+										<td class=" active"><label class="pull-right"><font color="red">*</font>注册资金 (万)：</label></td>
+					<td class=""><input id="registeredFund" name="registeredFund" class="form-control number required" type="text" value=""></td>
+
+
+				</tr>
+
+				<tr>
+				<td class="active"><label class="pull-right">从业人员数量：</label></td>
+					<td class=""><input id="employees" name="employees" class="form-control " type="text" value="" maxlength="5"></td>
+				
+					<td class=" active"><label class="pull-right">股东总数：</label></td>
+					<td class=""><input id="shareholdersNum" name="shareholdersNum" class="form-control " type="text" value="" maxlength="5"></td>
+					<td class=" active"><label class="pull-right">注册地址：</label></td>
+					<td class=""><input id="registeredAddress" name="registeredAddress" class="form-control " type="text" value=""></td>
+					<td class=" active"><label class="pull-right">通讯地址：</label></td>
+					<td class=""><input id="mailingAddress" name="mailingAddress" class="form-control " type="text" value=""></td>
+				</tr>
+
+				<tr>
+				<td class="active"><label class="pull-right">邮编：</label></td>
+					<td class=""><input id="postcode" name="postcode" class="form-control " type="text" value="" maxlength="6"></td>
+					<td class="active"><label class="pull-right">传真：</label></td>
+					<td class=""><input id="linkmanFax" name="linkmanFax" class="form-control " type="text" value=""></td>
+					<td class="active"><label class="pull-right">机构简介：</label></td>
+					<td class=""><textarea id="remarks" name="remarks" class="form-control "></textarea></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="fix_footer" style="margin-top:30px;">
+		<div class="input-group m-b text-muted validateCode" style="width: 100%;" align="center">
+			<label class="input-label mid" for="validateCode">验证码:</label>
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<input type="text" id="validateCode" name="validateCode" maxlength="5" class="txt required" style="font-weight:bold;width:45px;margin-bottom:5px;">
+<img src="../../servlet/validateCodeServlet.jpg" onclick="$('.validateCodeRefresh').click();" class="mid validateCode" style="">
+<a href="javascript:" onclick="$('.validateCode').attr('src','/servlet/validateCodeServlet?'+new Date().getTime());" class="mid validateCodeRefresh" style="">看不清</a>
+				
+		</div>
+		
+		<div style="width: 100%;" id="beiandiv" align="center">
+			<button id="beian" style="" type="button" class="re_num_btn" onclick="doSubmit()">提交</button>
+<!-- 			<button  style="margin-right:20px;" class="re_num_btn" onclick="fanhui()">返回</button> -->
+			<!-- <input type="button" value="返回" class="re_num_btn" onclick="fanhui()"> -->
+		</div>
+		</div>
+		
+		
+	</form>
+<!-- <script src="../../static/website2/js/jquery-1.10.1.min.js"></script> -->
+<script src="../../static/website2/js/datouwang.js"></script>
+
+	<script type="text/javascript">//<!-- 无框架时，左上角显示菜单图标按钮。
+		if(!(self.frameElement && self.frameElement.tagName=="IFRAME")){
+			$("body").prepend("<i id=\"btnMenu\" class=\"icon-th-list\" style=\"cursor:pointer;float:right;margin:10px;\"></i><div id=\"menuContent\"></div>");
+			$("#btnMenu").click(function(){
+
+				top.layer.open({
+				    type: 2, 
+				    area:['300px','350px'],
+				    content: 'get:/a/sys/menu/treeselect;JSESSIONID=' //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+				});
+				//top.$.jBox('get:/a/sys/menu/treeselect;JSESSIONID=', {title:'选择菜单', buttons:{'关闭':true}, width:300, height: 350, top:10});
+				//if ($("#menuContent").html()==""){$.get("/a/sys/menu/treeselect", function(data){$("#menuContent").html(data);});}else{$("#menuContent").toggle(100);}
+			});
+		}//-->
+	</script>
+</body>
+</html>

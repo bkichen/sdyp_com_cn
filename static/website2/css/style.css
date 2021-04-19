@@ -1,0 +1,200 @@
+/*娑擃厺淇婄純锟�
+ 2019-04-04
+ by liuqiumei
+ */
+body{
+	font-size: 20px;
+}
+.f_22{
+	font-size: 22px;
+}
+.f_18{
+	font-size: 18px;
+}
+.f_16{
+	font-size: 16px;
+}
+.f_14{
+	font-size: 14px;
+}
+.m_t{
+	margin-top: 20px;
+}
+.m_t10{
+	margin-top: 10px;
+}
+.m_t30{
+	margin-top: 30px;
+}
+.m_b{
+	margin-bottom: : 50px;
+}
+.f_l{
+	float: left;
+}
+.m_l{
+	margin-left: 10px;
+}
+li{
+
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color: #333;
+}
+a:link{
+	text-decoration:none;
+   /* 閹稿洦顒滅敮鍝ユ畱閺堫亣顫︾拋鍧楁６鏉╁洨娈戦柧鐐复*/
+}
+a:visited{
+	text-decoration:none;
+	 /*閹稿洤鍑＄紒蹇氼問闂傤喛绻冮惃鍕懠閹猴拷*/
+}
+a:hover{
+	text-decoration:none!important;
+	color: #eb0901!important;
+/*閹稿洭绱堕弽鍥ф躬闁剧偓甯�*/
+}
+a:active{
+	text-decoration:none;
+/* 閹稿洦顒滈崷銊у仯閻ㄥ嫰鎽奸幒锟�*/
+ }
+
+ /*閹碉拷閺堝鏅棃銏㈡畱婢舵挳鍎�*/
+ .index_top{
+  		background: url(../img/dingbu.png) no-repeat;
+  		background-size: auto 100%;
+  		background-position: center;
+  		height: 88px;
+  		font-size:14px;
+		}
+		.top_con{
+			display: table;
+	    height: 88px;
+		}
+		.top_img{
+			display: table-cell;
+			vertical-align: middle;
+		}
+	.top_right{
+	  text-align: right;
+	  display: table-cell;
+	  vertical-align: middle;
+	  margin-top: 8px;
+	}
+	.top_right .login_btn a,.top_right .company_in a{
+	color:#333;
+	font-size:18px;}
+	.login_btn a,.company_in a{
+	padding:5px 10px;
+	background-color:#db2121;
+	color:#fff!important;
+	border-radius:6px;
+	}
+	.login_btn a:hover,.company_in a:hover{
+      	background-color:#a61111;
+      }
+      .nav{
+      display:flex;
+      justify-content: space-between;
+      }
+	.nav_tab{
+	  height: 80px;
+	  background-color: #a61111;
+	  line-height: 80px;
+	}
+	.nt>ul>li{
+	  text-align: center;
+	  display: inline-block;
+	 /* height閿涳拷80px */
+	}
+	.nt>ul>li>a{
+	  width: auto;
+	  float: none;
+	  padding: 0 11px;
+	  color: #fff;
+      /* display: inline-block; */
+	}
+
+	.nt>ul>li>a:hover{
+	  background-color: #fff;
+	  color: #a61111;
+	}
+	.tab_active{
+	  background-color: #fff;
+	  color: #eb0901!important;
+	}
+/*閹碉拷閺堝鏅棃銏㈡畱婢舵挳鍎�-end*/
+/*鎼存洟鍎撮崗杈╂暏*/
+.link_tit{
+  border-bottom: 3px solid #f3f3f3;
+  display: table;
+  width: 100%;
+}
+.link_tit:after,.link_list:after{
+  content: '';
+  clear: both;
+  display: block;
+}
+.linknn{
+  display: table-cell;
+  width: 33%;
+  
+}
+.linkn{
+  padding: 5px 30px;
+  /* border-bottom: 5px solid #f1bbba; */
+  /*float: left;*/
+  width: 200px;
+  /* height: 64px; */
+}
+.linkn img{
+  height: 35px;
+}
+ .linkn_active{
+  border-bottom: 5px solid #a61111;
+} 
+
+.list_a li a{
+  width: auto;
+  font-size: 16px;
+}
+
+.link_list ul{
+  float: left;
+  width: 20%;
+  text-align: left;
+}
+.link_list ul li{
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+/*.link_list ul li:hover{
+  background-color: #DA2E25;
+}*/
+.link_list ul li a{
+  color: #666;
+  text-decoration: none;
+}
+.link_list ul li a:hover{
+  color: #eb0910!important;
+  /* background-color: #DA2E25; */
+}
+.foot_ban{
+  text-align: center;
+}
+.form-inline{
+	margin-top:20px;
+}
+/*鎼存洟鍎撮崗杈╂暏-end*/
+
+    .dev{
+      height: 90px;
+      background: #eaeaea;
+    }
+    .dev50{
+      height: 50px;
+      background: #eaeaea;
+    }

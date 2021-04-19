@@ -1,0 +1,356 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+    <meta charset="utf-8">
+		<meta name="description" content="User login page">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="../static/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+		<script src="../static/jquery/jquery-migrate-1.1.1.min.js" type="text/javascript"></script>
+		<script src="../static/jquery-validation/1.14.0/jquery.validate.js" type="text/javascript"></script>
+		<script src="../static/jquery-validation/1.14.0/localization/messages_zh.min.js" type="text/javascript"></script>
+		
+		<script src="../static/bootstrap/3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
+		<link href="../static/awesome/4.4/css/font-awesome.min.css" rel="stylesheet">
+		<link href="../static/common/jeeplus.css" type="text/css" rel="stylesheet">
+		<script src="../static/common/jeeplus.js" type="text/javascript"></script>
+		
+		<!-- text fonts -->
+		<link rel="stylesheet" href="../static/common/login/ace-fonts.css">
+
+		<!-- ace styles -->
+		<link rel="stylesheet" href="../static/common/login/ace.css">
+
+		<!-- 引入layer插件 -->
+		<script src="../static/layer-v2.3/layer/layer.js"></script>
+		<script src="../static/layer-v2.3/layer/laydate/laydate.js"></script>
+
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" href="../assets/css/ace-part2.css" />
+		<![endif]-->
+		<link rel="stylesheet" href="../static/common/login/ace-rtl.css">
+		<style type="text/css">
+			.bound{
+			    background-color: white;
+				background-color: rgba(255, 255, 255, 0.95);
+				border-radius: 40px;
+				}
+		    .widget-main{
+		        padding:25px 50px 50px 50px;
+		        margin:10px 10px
+		        }
+		    .alert{
+		        font-size:16px;
+		        margin:10px;
+		        }
+		   #code-error{
+		   		position:absolute;
+		   		top:18px;
+		   		right:-20px;
+		   }
+		   input{
+		   		margin-bottom:0px !important;
+		   }
+		   
+		</style>
+		<title>山东企业信息网 登录</title>
+		<script>
+			if (window.top !== window.self) {
+				window.top.location = window.location;
+			}
+		</script>
+		
+		<script type="text/javascript">
+				$(document).ready(function() {
+					$("#loginForm").validate({
+						rules: {
+							validateCode: {remote: "/servlet/validateCodeServlet"}
+						},
+						messages: {
+							username: {required: "请填写用户名."},password: {required: "请填写密码."},
+							validateCode: {remote: "验证码不正确.", required: "请填写验证码."}
+						},
+						errorLabelContainer: "#messageBox",
+						errorPlacement: function(error, element) {
+							error.appendTo($("#loginError").parent());
+						} 
+					});
+				});
+				// 如果在框架或在对话框中，则弹出提示并跳转到首页
+				if(self.frameElement && self.frameElement.tagName == "IFRAME" || $('#left').length > 0 || $('.jbox').length > 0){
+					alert('未登录或登录超时。请重新登录，谢谢！');
+					top.location = "/a";
+				}
+		</script>
+		<!-- 注册 -->
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$("#inputForm").validate({
+				rules: {
+				loginName: {remote: "/a/sys/user/validateLoginName"},
+				mobile: {remote: "/a/sys/user/validateMobile"},
+				randomCode: {
+					  remote:{
+						   url:"/a/sys/register/validateMobileCode", 
+						   data:{
+					       mobile:function(){
+					          return $("#tel").val();
+					          }
+			          		} 
+						}
+					}
+			},
+				messages: {
+					confirmNewPassword: {equalTo: "输入与上面相同的密码"},
+					ck1: {required: "必须接受用户协议."},
+					loginName: {remote: "此用户名已经被注册!", required: "用户名不能为空."},
+					mobile:{remote: "此手机号已经被注册!", required: "手机号不能为空."},
+					randomCode:{remote: "验证码不正确!", required: "验证码不能为空."}
+				},
+				submitHandler: function(form){
+					loading('正在提交，请稍等...');
+					form.submit();
+				},
+				errorContainer: "#messageBox",
+				errorPlacement: function(error, element) {
+					$("#messageBox").text("输入有误，请先更正。");
+					if (element.is(":checkbox")||element.is(":radio")||element.parent().is(".input-append")){
+						error.appendTo(element.parent().parent());
+					} else {
+						error.insertAfter(element);
+					}
+				}
+			});
+
+			$("#resetForm").validate({
+				rules: {
+				mobile: {remote: "/a/sys/user/validateMobileExist"}
+			},
+				messages: {
+					mobile:{remote: "此手机号未注册!", required: "手机号不能为空."}
+				},
+				submitHandler: function(form){
+					loading('正在提交，请稍等...');
+					form.submit();
+				},
+				errorContainer: "#messageBox",
+				errorPlacement: function(error, element) {
+					$("#messageBox").text("输入有误，请先更正。");
+					if (element.is(":checkbox")||element.is(":radio")||element.parent().is(".input-append")){
+						error.appendTo(element.parent().parent());
+					} else {
+						error.insertAfter(element);
+					}
+				}
+			});
+			// 手机号码验证
+			jQuery.validator.addMethod("isMobile", function(value, element) {
+			    var length = value.length;
+			    var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+			    return (length == 11 && mobile.test(value));
+			}, "请正确填写您的手机号码");
+
+
+
+			$('#sendPassBtn').click(function () { 
+				if($("#tel_resetpass").val()=="" || $("#tel_resetpass-error").text()!=""){
+					top.layer.alert("请输入有效的注册手机号码！", {icon: 0});//讨厌的白色字体问题
+					return;
+
+				}
+				$("#sendPassBtn").attr("disabled", true); 
+				$.get("/a/sys/user/resetPassword?mobile="+$("#tel_resetpass").val(),function(data){
+						if(data.success == false){
+							top.layer.alert(data.msg, {icon: 0});//讨厌的白色字体问题
+							//alert(data.msg);
+							$("#sendPassBtn").html("重新发送").removeAttr("disabled"); 
+							clearInterval(countdown); 
+						}
+					});
+				var count = 60; 
+				var countdown = setInterval(CountDown, 1000); 
+				function CountDown() { 
+					$("#sendPassBtn").attr("disabled", true); 
+					$("#sendPassBtn").html("等待 " + count + "秒!"); 
+					if (count == 0) { 
+						$("#sendPassBtn").html("重新发送").removeAttr("disabled"); 
+						clearInterval(countdown); 
+					} 
+					count--; 
+				}
+			}) ;
+			
+			$('#sendCodeBtn').click(function () { 
+				if($("#tel").val()=="" || $("#tel-error").text()!=""){
+					//top.layer.alert("请输入有效的注册手机号码！", {icon: 0});//讨厌的白色字体问题
+					return;
+
+				}
+				$("#sendCodeBtn").attr("disabled", true); 
+				$.get("/a/sys/register/getRegisterCode?mobile="+$("#tel").val(),function(data){
+						if(data.success == false){
+							//top.layer.alert(data.msg, {icon: 0});讨厌的白色字体问题
+							alert(data.msg);
+							$("#sendCodeBtn").html("重新发送").removeAttr("disabled"); 
+							clearInterval(countdown); 
+
+						}
+
+					});
+				var count = 60; 
+				var countdown = setInterval(CountDown, 1000); 
+				function CountDown() { 
+					$("#sendCodeBtn").attr("disabled", true); 
+					$("#sendCodeBtn").html("等待 " + count + "秒!"); 
+					if (count == 0) { 
+						$("#sendCodeBtn").html("重新发送").removeAttr("disabled"); 
+						clearInterval(countdown); 
+					} 
+					count--; 
+				}
+				
+			}) ;
+			
+		});		
+	</script>
+	
+	    <link href="../static/newlogin/css/mui.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../static/newlogin/css/load.css">
+		<link rel="stylesheet" href="../static/newlogin/css/iconfont.css">
+		<script type="text/javascript" src="../static/newlogin/js/iconfont.js"></script>
+		<script type="text/javascript" src="../static/newlogin/js/vue.min.js"></script>		
+		
+		<!--<script type="text/javascript" src="js/jquery.validate.js" ></script>-->
+		<!-- <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script> -->
+		<script type="text/javascript" src="../static/newlogin/js/public.js"></script>
+	<script type="text/javascript" src="/js/kb.js"></script></head>
+	<body>
+		<!--主体-load	-->
+		<div class="mload">
+			<!--头部导航-->
+			<header class="mui-row">
+			     <img src="../static/newlogin/img/logo.png" class="mui-pull-left logo1"> 
+				<div class="mui-pull-left load-btns">
+					<span class="loadbtn">山东企业信息网</span> 
+				<!-- 	<span class="regbtn">注册</span> -->
+				</div>
+			</header>
+			<div class="load-main">
+				
+
+				<!--登录框-->
+				<div class="loadw">
+					<img class="logo" src="../static/newlogin/img/logo.png">
+					<div class="widget-main bound">
+					<form id="loginForm" class="form-signin" action="/a/login" method="post">
+						<div class="input-div">
+						<label></label>
+						<span class="iconfont icon-shoujihao"></span>
+						<input type="text" id="phone" name="username" value="" placeholder="请输入用户名" required/="">
+						</div>
+						<div class="input-div">
+						<label> </label>
+						<span class="iconfont icon-mima"></span>
+						<input type="password" id="psd" name="password" value="" placeholder="请输入登录密码" required/="">
+						</div>
+						
+
+						<div class="clearfix" style="margin:10px;">
+							<label class="inline">
+								<input type="checkbox" id="rememberMe" name="rememberMe" class="ace" onclick="remember();">
+								<span class="lbl"> 记住密码</span>
+							</label>
+						</div>
+						<button type="submit" class="load-btn1">立即登录</button>						
+						
+						<div class="center">
+							 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 0:隐藏tip, 1隐藏box,不设置显示全部 -->
+
+
+<script type="text/javascript">
+if($('.jbox').length > 0){
+	top.$.jBox.closeTip();
+}
+</script>
+
+						</div>
+
+				    </form>
+				    </div>
+			
+				</div>
+			</div>
+			<!--脚部-->
+			<div class="loadf">
+				<p style="margin-bottom: 3px"> Copyright &copy; www.creditchina315.com, All Rights Reserved.备案号： 京ICP备19014191号   </p>
+				<!-- <p style="margin-bottom: 3px">主管单位：河南省发展和改革委员会</p>
+				<p style="margin-bottom: 3px"> 主办单位：中国企业信用信息管理系统</p> -->
+			</div>
+		</div>
+
+		<script src="../static/newlogin/js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+
+		<script type="text/javascript">
+			if('ontouchstart' in document.documentElement) document.write("<script src='../assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
+		</script>
+		<style>
+		/* Validation */
+
+			label.error {
+			    color: #cc5965;
+			    display: inline-block;
+			    margin-left: 5px;
+			}
+			
+			.form-control.error {
+			    border: 1px dotted #cc5965;
+			}
+		</style>
+	<!-- inline scripts related to this page -->
+		<script type="text/javascript">
+		$(document).ready(function() {
+			 $(document).on('click', '.form-options a[data-target]', function(e) {
+				e.preventDefault();
+				var target = $(this).data('target');
+				$('.widget-box.visible').removeClass('visible');//hide others
+				$(target).addClass('visible');//show target
+			 });
+			});
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,388 @@
+/* 娴滃瞼楠囨い鐢告桨閸忚京鏁ss閺嶅嘲绱� */
+.sec_body{
+	background-color: #eee!important;
+	font-size: 16px;
+	padding-bottom: 20px;
+}
+.b_w{
+	background-color: #FFf!important;
+	margin-bottom: 30px;
+}
+.b_mark{
+	float: left;
+	width: 0;
+	height: 0;
+	border: 10px solid;
+	border-color:transparent transparent transparent #a61111;
+}
+.main_query{
+	padding: 20px 10px 30px 10px;
+
+}
+.main_tit{
+	color: #a61111;
+	text-align: center;
+	font-size: 20px
+}
+.re_num{
+  height: 45px;
+  width:280px; 
+  border:none;
+  border:2px solid #DDDDDD; 
+  border-radius:5px; 
+  line-height:45px; 
+  padding:2px 5px 2px 10px; 
+  color: #333;
+  background:rgba(255, 255, 255, 0.4);
+  outline: none;
+  /*float: left;*/
+  
+}
+input:focus{
+  /*box-shadow:0 0 5px #DA2E25;
+  -webkit-box-shadow:0 0 5px #DA2E25;
+  -moz-box-shadow:0 0 5px #DA2E25;*/
+  border:2px solid #DA2E25;
+
+}
+/*  input{
+ margin: 0 50px; 
+}  */
+.re_num_btn{
+  width:162px; 
+  display:inline-block; 
+  background:#eb0910;
+  color:#fff; 
+  height: 45px;
+  line-height:45px; 
+  border-radius:5px;
+  border:none; 
+  margin-left: 50px;
+  /*float: right;*/
+}
+.main_list{
+	/*width: 100%;*/
+	/*height: auto;*/
+	border: 2px solid #eb0910;
+	text-align:center;
+	border-radius: 6px;
+	margin:50px;
+	height: 1000px;
+	overflow: hidden;
+}
+.main_table{
+	width: 100%;
+	
+}
+.table_title:after{
+	content:'';
+	clear:both;
+	display:block;
+}
+.table_title span,.serve_table tr th{
+	height: 65px;
+	color: #eb0910;
+	font-size: 18px;
+	border-bottom: 2px solid #eb0910;
+	text-align: center;
+	line-height:65px;
+}
+.main_table tr td,.serve_table tr td{
+	font-size: 16px;
+	text-align: center;
+	height: 45px;
+}
+/*閺屻儴顕楃紒鎾寸亯*/
+.result_list{
+	border: 2px solid #eb0910;
+	border-radius: 6px;
+}
+.result_list:after,.item_img:after{
+	content: '';
+	clear: both;
+	display: block;
+}
+.result_table{
+	/*text-align: center;*/
+	padding: 10px;
+}
+.result_item{
+	background: url(../img/qiyexini.png) no-repeat;
+	background-position: center center;
+	height: 50px;
+	text-align: center;
+	line-height: 35px;
+	font-size: 20px;
+	color: #eb0910;
+}
+.item_table,.item_table tr,.item_table tr td{
+	border: 2px solid #dbdbdb;
+	padding: 15px  20px;
+	text-align: center;
+
+}
+.w_20{
+	width: 20%;
+}
+.w_30{
+	width: 30%;
+}
+.result_item2{
+	background: url(../img/qiyexini.png) no-repeat;
+	background-position: center center;
+	height: 50px;
+	text-align: center;
+	line-height: 35px;
+	font-size: 20px;
+	color: #eb0910;
+}
+.item_img{
+	/*text-align: left;*/
+	padding: 0 50px;
+}
+.item_row{
+	text-align: center;
+	float: left;
+	width: 33%;
+	overflow: hidden;
+	font-size: 18px;
+}
+/*娣囷紕鏁ら張宥呭閺堢儤鐎�*/
+.col-sm-2,.col-sm-1,.col-sm-3{
+	padding-left: 0;
+	padding-right: 0;
+}
+.bg_r{
+	background: #f8e2e0;
+}
+.r_b_table{
+	color: #eb0910;
+	border:1px solid #dbdbdb;
+	font-size: 16px;
+	width: 100%
+	margin:0 50px;
+	text-align: center;
+}
+.r_b_table tr th{
+	color: #333;
+	height: 90px;
+	font-size: 18px;
+	text-align: center;
+}
+.r_b_table tr td{
+	padding:20px 40px;
+	border: 1px dashed  #eb0910;
+}
+/*閸欏苯鍙曠粈锟�*/
+.left_top{
+	/* height: 100px; */
+	background: #3499da;
+	color: #fff;
+	font-size: 22px;
+	padding: 10px;
+	
+	
+}
+.left_show{
+	float: left;
+	margin-right: 2%;
+	width: 23%;
+
+}
+.con_double::after{
+	content: '';
+	clear: both;
+	display: block;
+}
+.left_top>img{
+	float: right;
+}
+
+.right_show{
+	float: left;
+	width: 75%;
+}
+.title_show{
+	background: #DA2E25;
+	color: #fff;
+	padding: 10px 50px;
+	float: right;
+}
+.title_wrap::after{
+	content: '';
+	clear: both;
+	display: block;
+}
+.right_con{
+	border: 1px solid #dbdbdb;
+	/*display: inline-block;*/
+	background: #fff;
+	padding: 30px;
+}
+.right_con a{
+	color:#333;
+}
+.word_c{
+	color: #eb0910;
+	font-size: 14px;
+}
+.double_con:after{
+	content: '';
+	clear: both;
+	display: block;
+}
+.double_item1{
+	width: 45%;
+	border:1px solid #dbdbdb;
+	float: left;
+}
+.double_item2{
+	width: 45%;
+	border:1px solid #dbdbdb;
+	float: right;
+}
+.item_title{
+	border-bottom: 1px solid #eb0910;
+	padding: 10px;
+	font-size: 18px;
+}
+.item_more{
+	color: #999;
+	float: right;
+}
+.list_title{
+	width: 75%;
+	float: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.double_list{
+	padding: 10px;
+	border-bottom: 1px solid #dbdbdb;
+	font-size: 16px;
+}
+.list_time{
+	color: #999;
+	/*float: right;*/
+}
+/*娣囷紕鏁ら崝銊︼拷锟�*/
+.left_items{
+	font-size: 18px;
+	color: #eb0910;
+	background:#fff;
+
+}
+.left_item{
+	padding: 10px 0;
+	text-align: center;
+	border-bottom: 1px solid #dbdbdb;
+	/*background:#fff;*/
+	color: #eb0910;
+}
+.left_item img{
+	margin-right: 10px;
+}
+.left_item_ac{
+	background: #eb0910;
+	color: #fff;
+}
+.artical_con{
+	color: #666;
+	height: 66px;
+	line-height: 22px;
+	overflow: hidden;
+
+}
+.artical_footer{
+	color: #999;
+	font-size: 14px;
+	float: right;
+	margin-bottom: 10px;
+}
+.artical_footer img { 
+	width: 15px;
+	vertical-align: middle;
+}
+.artical{
+	border-bottom: 1px solid #dbdbdb; 
+}
+.artical:after{
+	content: '';
+	clear: both;
+	display: block;
+}
+.mark_l{
+	width: 12px;
+    height: 12px;
+    background-color: #eb0901;
+    float: left;
+    margin-right: 10px;
+    vertical-align: middle;
+    margin-top: 4px;
+}
+.f_l{
+	float: left;
+}
+.w_h{
+	width: 70%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.article_1{
+	color: #eb0910;
+}
+
+.btn_list{
+	padding: 10px;
+	color: #fff;
+	float: left;
+	margin-left: 10px;
+}
+.right_con::after,.btn_lists::after{
+	content: '';
+	clear: both;
+	display: block;
+}
+.btn_lists{
+	border-bottom: 1px dashed #eb0910;
+	padding-bottom: 30px;
+}
+
+.serch_btn{
+	height: 44px;
+	background: #eb0910;
+	border:none;
+	margin-left: -10px;
+	color: #fff;
+	line-height: 44px;
+
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px; 
+
+}
+.r_b_table{
+	width: 100%;
+	border: 1px solid #fff;
+}
+.r_b_table1 tr th{
+	background: #eb0910;
+	border: 2px solid #fff;
+	height: 50px;
+	padding: 10px 30px;
+	color: #fff;
+	width: 380px;
+	text-align: center;
+
+
+}
+.r_b_table1 tr td{
+	background: #f8e2e0;
+	border: 2px solid #fff;
+	height: 50px;
+	padding: 10px 30px;
+	text-align: center;
+
+
+}
